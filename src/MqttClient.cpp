@@ -1,4 +1,4 @@
-#include <MqttClient.h>
+#include "MqttClient.h"
 
 #include <stdexcept>
 #include <Arduino.h>
@@ -85,7 +85,7 @@ bool MqttClient::connect(const String &clientId, const String &broker, int port)
     }
 
     if (clientId == "") {
-        m_clientId = "Node-" + m_wifi.MacGetString();
+        m_clientId = m_wifi.MacGetString();
     }
     else {
         m_clientId = clientId;
@@ -96,6 +96,10 @@ bool MqttClient::connect(const String &clientId, const String &broker, int port)
 
     m_fsm->NextStateSet(MQTT_STATE_CONNECTING);
     return true;
+}
+
+const String& MqttClient::ClientIdGet() {
+    return m_clientId;
 }
 
 /**

@@ -48,6 +48,8 @@ namespace Mqtt {
             void          TopicPrefixSet(const String &prefix);
             const String& TopicPrefixGet();
 
+            const String& ClientIdGet();
+
             bool connect(const String &clientId, const String &broker, int port);
             bool connected();
             bool disconnect();
