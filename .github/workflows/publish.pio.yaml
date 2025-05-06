@@ -61,9 +61,12 @@ jobs:
           git push origin HEAD:master
 
       - name: Delete build tag from remote
+        env:
+          TAG_REF: ${{ github.ref }}
         run: |
-          TAG="${GITHUB_REF##*/}"
-          git push origin :refs/tags/$TAG
+          TAG_NAME="${TAG_REF##refs/tags/}"
+          echo "Deleting remote tag: $TAG_NAME"
+          git push origin ":refs/tags/$TAG_NAME"
       
       - name: Publish to PlatformIO
         env:
