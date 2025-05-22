@@ -1,6 +1,6 @@
 {
   "name": "MqttClient",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A facade for PubSubClient providing a slightly more abstract interface",
   "keywords": "FSM, state machine, finite state machine",
   "repository": {
